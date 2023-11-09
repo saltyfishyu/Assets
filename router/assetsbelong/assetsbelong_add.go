@@ -21,16 +21,16 @@ func Add() gin.HandlerFunc {
 		}
 		domain = domain[1:]
 
-		result := db.AssetsBelong_Add(json.Aid, domain)
+		result, msg := db.AssetsBelong_Add(json.Aid, domain)
 		if result {
 			c.JSON(http.StatusOK, gin.H{
 				"status": 0,
-				"msg":    "success",
+				"msg":    msg,
 			})
 		} else {
 			c.JSON(http.StatusOK, gin.H{
 				"status": 1,
-				"msg":    "false",
+				"msg":    msg,
 			})
 		}
 	}

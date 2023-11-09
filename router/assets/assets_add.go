@@ -15,16 +15,16 @@ func Add() gin.HandlerFunc {
 		json := &AssetsAddJson{}
 		c.BindJSON(&json)
 
-		result := db.Assets_Add(json.Content)
+		result, msg := db.Assets_Add(json.Content)
 		if result {
 			c.JSON(http.StatusOK, gin.H{
 				"status": 0,
-				"msg":    "success",
+				"msg":    msg,
 			})
 		} else {
 			c.JSON(http.StatusOK, gin.H{
 				"status": 1,
-				"msg":    "false",
+				"msg":    msg,
 			})
 		}
 	}
