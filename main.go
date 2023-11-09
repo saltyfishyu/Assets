@@ -30,14 +30,14 @@ func main() {
 		indexrouter.POST("/", index.Index())
 	}
 
-	assetsrouter := r.Group("/assets")
+	assetsrouter := r.Group("/assets") // 资产组
 	{
-		assetsrouter.GET("/all", assets.All())
-		assetsrouter.POST("/add", assets.Add())
+		assetsrouter.GET("/all", assets.All())  // 获取所有资产组
+		assetsrouter.POST("/add", assets.Add()) // 新增资产组
 	}
-	assetsbelongrouter := r.Group("/assetsbelong")
+	assetsbelongrouter := r.Group("/assetsbelong") // 资产组-资产
 	{
-		assetsbelongrouter.POST("/add", assetsbelong.Add())
+		assetsbelongrouter.POST("/add", assetsbelong.Add()) // 新增资产
 	}
 
 	r.Run("127.0.0.1:7070")

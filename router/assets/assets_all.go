@@ -8,9 +8,10 @@ import (
 
 func All() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		data := db.Assets_All()
+		data, msg := db.Assets_All()
 		c.JSON(http.StatusOK, gin.H{
 			"status": 0,
+			"msg":    msg,
 			"data":   data,
 		})
 	}
